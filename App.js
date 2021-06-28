@@ -6,9 +6,9 @@
  * @flow strict-local
  */
 
- import React from 'react';
+ 
  import {
-   SafeAreaView,
+   SafeAreaView, //SafeAreaView는 Device의 안전한 영역을 구별하는 Component이다 노치 침범 방지..
    StyleSheet,
    TextInput,
    View,
@@ -17,8 +17,20 @@
  } from 'react-native';
  import TodoInsert from './components/TodoInsert';
  import TodoList from './components/TodoList';
+ import React, {useState} from 'react';
  
  const App = () => {
+
+  const [todos, setTodos] = useState([]);
+
+  const addTodo = text => { //입력한 텍스트로 새로운 todo객체 형성
+    setTodos([
+      ...todos,
+      {id: Math.random().toString(), textValue: text, checked: false},
+    ]);
+  };
+
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.appTitle}>Hello Todolist</Text>
@@ -33,22 +45,22 @@
  const styles = StyleSheet.create({
    container: {
      flex: 1,
-     backgroundColor: '#3143e8',
+     backgroundColor: 'pink',
    },
    appTitle: {
-     color: '#fff',
+     color: 'black',
      fontSize: 36,
      marginTop: 30,
      marginBottom: 30,
      fontWeight: '300',
      textAlign: 'center',
-     backgroundColor: '#3143e8',
+     backgroundColor: 'pink',
    },
    card: {
-     backgroundColor: '#fff',
+     backgroundColor: 'white',
      flex: 1,
-     borderTopLeftRadius: 10, // to provide rounded corners
-     borderTopRightRadius: 10, // to provide rounded corners
+     borderTopLeftRadius: 10, // 둥글게 처리
+     borderTopRightRadius: 10, 
      marginLeft: 10,
      marginRight: 10,
    },

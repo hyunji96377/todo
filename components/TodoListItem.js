@@ -1,7 +1,7 @@
 // components/TodoListItem.js
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import Icon from 'react-native-vector-icons/AntDesign';
+import Icon from 'react-native-vector-icons/AntDesign'; //아이콘
 
 const TodoListItem = () => {
     return (
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
   },
   strikeText: {
     color: '#bbb',
-    textDecorationLine: 'line-through',
+    textDecorationLine: 'line-through', //라인
   },
   unstrikeText: {
     color: '#29323c',

@@ -7,12 +7,12 @@ const TodoInsert = () => {
     <View style={styles.inputContainer}>
       <TextInput
         style={styles.input}
-        placeholder="Add an item!"
+        placeholder="입력하세요"
         placeholderTextColor={'#999'}
-        autoCorrect={false}
+        autoCorrect={false} //자동 오타수정 해제
       />
       <View style={styles.button}>
-        <Button title={'ADD'} />
+        <Button title={'추가'} />
       </View>
     </View>
   );
@@ -20,7 +20,7 @@ const TodoInsert = () => {
 
 const styles = StyleSheet.create({
   inputContainer: {
-    flexDirection: 'row',
+    flexDirection: 'row', //input이랑 add버튼 가로배열
     justifyContent: 'space-between',
     alignItems: 'center',
   },
@@ -29,11 +29,15 @@ const styles = StyleSheet.create({
     padding: 20,
     borderBottomColor: '#bbb',
     borderBottomWidth: 1,
-    fontSize: 24,
+    fontSize: 22,
     marginLeft: 20,
+    textAlign : 'center'
   },
   button: {
     marginRight: 10,
+    marginTop: 10,
+    backgroundColor:'pink'
+    
   },
 });
 
