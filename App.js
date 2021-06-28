@@ -17,7 +17,7 @@
  } from 'react-native';
  import TodoInsert from './components/TodoInsert';
  import TodoList from './components/TodoList';
- import React, {useState} from 'react'; //useState 인자로 초기값 받음.
+ import React, {useState} from 'react'; //useState는 인자로 초기값 받음.
  
  const App = () => {
 
@@ -37,7 +37,7 @@
 
   const onToggle = id => e => { //id받아와 checked속성값 반대로 변경해줌
     setTodos(
-      todos.map(todo =>
+      todos.map(todo => 
         todo.id === id ? {...todo, checked: !todo.checked} : todo,
       ),
     );
@@ -48,7 +48,7 @@
     <SafeAreaView style={styles.container}>
       <Text style={styles.appTitle}>Hello Todolist</Text>
       <View style={styles.card}>
-        <TodoInsert onAddTodo={addTodo} />
+        <TodoInsert onAddTodo={addTodo} /> 
         <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle}/>
       </View>
     </SafeAreaView>

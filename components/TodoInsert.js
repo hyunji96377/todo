@@ -1,5 +1,5 @@
 // components/TodoInsert.js
-import React, {useState} from 'react';
+import React, {useState} from 'react'; //입력한 값 상태 관리.
 import {Button, StyleSheet, TextInput, View} from 'react-native';
 
 
@@ -7,13 +7,13 @@ import {Button, StyleSheet, TextInput, View} from 'react-native';
 const TodoInsert = ({onAddTodo}) => { //전달된 함수
     const [newTodoItem, setNewTodoItem] = useState(''); //새로 입력한 text상태,newTodoItem 업데이트
 
-    const todoInputHandler = newTodo => {
+    const todoInputHandler = newTodo => { //실시간 텍스트 값 변화 관리
         setNewTodoItem(newTodo);
       };
     
     const addTodoHandler = () => {
-        onAddTodo(newTodoItem);
-        setNewTodoItem('');
+        onAddTodo(newTodoItem); //입력받은 텍스트 값을 목록에 추가 
+        setNewTodoItem(''); //입력창 초기화
       };
 
   return (
@@ -23,11 +23,11 @@ const TodoInsert = ({onAddTodo}) => { //전달된 함수
         placeholder="입력하세요"
         placeholderTextColor={'#999'}
         onChangeText={todoInputHandler}
-        value={newTodoItem}
+        value={newTodoItem} //텍스트 값의 최신 상태 담김.
         autoCorrect={false} //자동 오타수정 해제
       />
       <View style={styles.button}>
-        <Button title={'추가'} onPress={addTodoHandler} />
+        <Button title={'추가'} onPress={addTodoHandler} /> //
       </View>
     </View>
   );
