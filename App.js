@@ -17,17 +17,30 @@
  } from 'react-native';
  import TodoInsert from './components/TodoInsert';
  import TodoList from './components/TodoList';
- import React, {useState} from 'react';
+ import React, {useState} from 'react'; //useState 인자로 초기값 받음.
  
  const App = () => {
 
-  const [todos, setTodos] = useState([]);
+//todos: {id: Number, textValue: string, checked: boolean }
+  const [todos, setTodos] = useState([]); //목록 현재 상태, todos업데이트 하는 함수
 
   const addTodo = text => { //입력한 텍스트로 새로운 todo객체 형성
     setTodos([
-      ...todos,
+      ...todos, //이전꺼에 새로운 목록 추가!
       {id: Math.random().toString(), textValue: text, checked: false},
     ]);
+  };
+
+  const onRemove = id => e => { //setTodos로 상태 업데이트
+    setTodos(todos.filter(todo => todo.id !== id));
+  };
+
+  const onToggle = id => e => { //id받아와 checked속성값 반대로 변경해줌
+    setTodos(
+      todos.map(todo =>
+        todo.id === id ? {...todo, checked: !todo.checked} : todo,
+      ),
+    );
   };
 
 
@@ -35,8 +48,8 @@
     <SafeAreaView style={styles.container}>
       <Text style={styles.appTitle}>Hello Todolist</Text>
       <View style={styles.card}>
-        <TodoInsert />
-        <TodoList />
+        <TodoInsert onAddTodo={addTodo} />
+        <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle}/>
       </View>
     </SafeAreaView>
   );

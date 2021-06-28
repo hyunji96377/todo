@@ -3,17 +3,20 @@ import React from 'react';
 import {StyleSheet, ScrollView, Text} from 'react-native';
 import TodoListItem from './TodoListItem';
 
-const TodoList = () => {
+const TodoList = ({todos,onRemove,onToggle}) => {
     return (
       <ScrollView contentContainerStyle={styles.listContainer}>
-        <TodoListItem />
+        {todos.map(todo => (
+        <TodoListItem key={todo.id} {...todo} onRemove={onRemove} onToggle={onToggle}/>
+      ))}
       </ScrollView>
     );
   };
   
   const styles = StyleSheet.create({
     listContainer: {
-      alignItems: 'center',
+      alignItems: 'center',//교차축에 대해 center에 정렬
+      
     },
   });
   
